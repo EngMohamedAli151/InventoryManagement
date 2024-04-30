@@ -43,9 +43,10 @@ namespace InventoryManagement.Repository.Repository
         /// implementation to retrive all rows in entity
         /// </summary>
         /// <returns></returns>
-        public virtual async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IQueryable<T>> GetAllAsync()
         {
-            return await _Dbset.ToListAsync();
+            var list = await _Dbset.AsNoTracking().ToListAsync();
+            return list.AsQueryable();
         }
 
         /// <summary>
@@ -92,6 +93,7 @@ namespace InventoryManagement.Repository.Repository
         public virtual async Task<bool> AddAsync(T entity)
         {
            await _Dbset.AddAsync(entity);
+            _context.SaveChangesAsync();
             return true;
              
         }

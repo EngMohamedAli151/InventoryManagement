@@ -23,7 +23,8 @@ namespace InventoryManagement.Services.Services
             _unitOfWork = unitOfWork;
             _itemRepository = itemRepository;
             
-        }/// <summary>
+        }
+        /// <summary>
         /// to retrive Any entity Join 
         /// </summary>
         /// <param name="match"></param>

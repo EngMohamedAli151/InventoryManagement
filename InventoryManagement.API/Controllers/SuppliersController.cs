@@ -1,6 +1,7 @@
 ﻿using InventoryManagement.Core.Dto;
 using InventoryManagement.Database.Model;
 using InventoryManagement.Services.InterFace;
+using InventoryManagement.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,12 +22,12 @@ namespace InventoryManagement.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("GetItem")]
+        [HttpGet("GetSupplier")]
         public virtual async Task<IActionResult> GetSupplierById(int id)
         {
 
             var Sup = await _supplierservices.GetByIdAsync(id);
-            if (id == null)
+            if (id == null) 
                 return BadRequest($"The Item With Id {id} Doesn't Exist!");
             
             return Ok(Sup);
@@ -35,18 +36,12 @@ namespace InventoryManagement.API.Controllers
         /// EndPoint retrive All item
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAllCategories")]
+        [HttpGet("GetAllSupplier")]
         public virtual async Task<IActionResult> GetAllSuppliers()
         {
             var Sup = await _supplierservices.GetAllAsync();
-            var Display = Sup.Select(Sup => new Supplier
-            {
-               SupplierId=Sup.SupplierId,
-                SupplierName = Sup.SupplierName,
-                ContactEmail = Sup.ContactEmail
-
-        });
-            return Ok(Display);
+            
+            return Ok(Sup);
 
         }
         /// <summary>
@@ -62,7 +57,10 @@ namespace InventoryManagement.API.Controllers
             var Sup = new Supplier
             {
                 SupplierName = dto.SupplierName,
-                ContactEmail = dto.ContactEmail
+                ContactEmail = dto.ContactEmail,
+                Address = dto.Address,
+                Phone = dto.Phone
+                
 
             };
 

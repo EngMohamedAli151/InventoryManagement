@@ -25,17 +25,12 @@ namespace InventoryManagement.API.Controllers
         [HttpGet("GetItem")]
         public virtual async Task <IActionResult> GetById(int id) 
         {
-           
+
             var item = await _itemServices.GetByIdAsync(id);
             if (id == null)
                 return BadRequest($"The Item With Id {id} Doesn't Exist!");
-            var Display = new ItemDto
-            {
-                ItemName =item.ItemName ,
-                Price = item.Price,
-                SupplierId = item.SupplierId
-            };
-            return Ok(Display);
+
+            return Ok(item);
         }
 
         /// <summary>
@@ -45,8 +40,9 @@ namespace InventoryManagement.API.Controllers
         [HttpGet("GetAllItems")]
         public virtual async Task<IActionResult>GetAll()
         {
-            var items = await _itemServices.GetAllAsync();
-            return Ok(items);
+            var item= await _itemServices.GetAllAsync();
+         
+            return Ok(item);
            
         }
 
@@ -64,7 +60,9 @@ namespace InventoryManagement.API.Controllers
             {
                 ItemName = dto.ItemName,
                 Price = dto.Price,
-                SupplierId = dto.SupplierId
+                SupplierFk = dto.SupplierId,
+                CategoryFk=dto.CategoryID,
+                Description = dto.Description
             };
 
             var Result = await _itemServices.AddAsync(item);
@@ -100,7 +98,9 @@ namespace InventoryManagement.API.Controllers
 
             updatedItem.ItemName = dto.ItemName;
             updatedItem.Price = dto.Price;
-            updatedItem.SupplierId= dto.SupplierId;
+            updatedItem.SupplierFk= dto.SupplierId;
+            updatedItem.CategoryFk= dto.CategoryID;
+            updatedItem.Description = dto.Description;
             var result = _itemServices.Update(updatedItem);
             return Ok(result);
 

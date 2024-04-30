@@ -18,7 +18,7 @@ namespace InventoryManagement.Repository.Interface
         public Task<bool> AddAsync(T entity);
         public Task<bool> DeleteAsync(int id);
         public Task<bool> Update(T entity);
-        public Task<IEnumerable<T>> GetAllAsync();
+        public Task<IQueryable<T>> GetAllAsync();
         public Task<T> Find(Expression<Func<T, bool>> match, string[] includes = null);
         public Task<IEnumerable<T>> FindAll(Expression<Func<T, bool>> match, string[] includes = null);
         

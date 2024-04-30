@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Core.Dto
 {
-    public class SupplierDto
+    public class CustomerDto
     {
-        public string SupplierName { get; set; }
-        public string ContactEmail { get; set; }
+        [MaxLength(100)]
+        public string CustomerName { get; set; }
+        public string Email { get; set; }
         public string Phone { get; set; }
         [MaxLength(100)]
         public string Address { get; set; }

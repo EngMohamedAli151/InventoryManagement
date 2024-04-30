@@ -20,5 +20,6 @@ namespace InventoryManagement.Services.InterFace
         public Task<bool> DeleteAsync(int id);
         public Task<bool> Update(Model entity);
         public Task<IEnumerable<Model>> GetAllAsync();
+
     }
 }

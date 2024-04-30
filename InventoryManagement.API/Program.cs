@@ -30,12 +30,20 @@ namespace InventoryManagement.API
             builder.Services.AddScoped<IUnitOfWork<InventoryDbContext>, UnitOfWork<InventoryDbContext>>();
             builder.Services.AddScoped<IItemServices, ItemServices>();
             builder.Services.AddScoped<ISupplierServices, SupplierServices>();
+            builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+            //builder.Services.AddScoped<ICustomerServices, CustomerServices>();
+            //builder.Services.AddScoped<IOrderServices, OrderServices>();
+            //builder.Services.AddScoped<ILocationServices, LocationServices>();
+            //builder.Services.AddScoped<ITransportationServices,TransportationServices>();
+            //builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IBaseRepository<Item>, BaseRepository<Item>>();
             builder.Services.AddScoped<IBaseRepository<Supplier>, BaseRepository<Supplier>>();
+            builder.Services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             //Signal R
-            builder.Services.AddSignalR();
+            //builder.Services.AddSignalR();
             var app = builder.Build();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -47,8 +55,13 @@ namespace InventoryManagement.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapHub<InventoryHub>("/InventoryHub");
+            //    // Map other endpoints...
+            //});
 
-            
+
             app.MapControllers();
 
             app.Run();

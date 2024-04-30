@@ -23,7 +23,7 @@ namespace InventoryManagement.Repository.Repository
 
         public async Task<bool> CompleteAsync()
         {
-            var Result = await _context.SaveChangesAsync();
+            var Result =  _context.SaveChangesAsync().Result;
             return Result >0;
         }
 

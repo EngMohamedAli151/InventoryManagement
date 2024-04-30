@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Core.Dto
 {
-    public class ItemDto
+    public class CategoryDto
     {
         [MaxLength(100)]
-        public string ItemName { get; set; }
-        public long Price { get; set; }
+        public string Name { get; set; }
         [MaxLength(250)]
         public string Description { get; set; }
-        public int SupplierId { get; set; }
-        public int CategoryID { get; set; }
-
     }
 }

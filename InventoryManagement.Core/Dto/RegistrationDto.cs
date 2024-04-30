@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Core.Dto
 {
-    public class SupplierDto
+    public class RegistrationDto
     {
-        public string SupplierName { get; set; }
-        public string ContactEmail { get; set; }
-        public string Phone { get; set; }
         [MaxLength(100)]
-        public string Address { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        [Required]
+        public string Email { get; set; }
+        public string Role { get; set; }
     }
 }

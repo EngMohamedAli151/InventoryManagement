@@ -61,9 +61,9 @@ namespace InventoryManagement.Services.Services
         /// implementation to retrive all rows in entity
         /// </summary>
         /// <returns></returns>
-        public virtual Task<IEnumerable<Model>> GetAllAsync()
+        public virtual async Task<IEnumerable<Model>> GetAllAsync()
         {
-            return _baseRepository.GetAllAsync();
+            return await _baseRepository.GetAllAsync();
         }
 
         /// <summary>
@@ -108,5 +108,6 @@ namespace InventoryManagement.Services.Services
             _unitOfWork.CompleteAsync();
             return true;
         }
+
     }
 }
