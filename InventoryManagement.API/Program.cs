@@ -25,23 +25,30 @@ namespace InventoryManagement.API
             var connectionString = builder.Configuration.GetConnectionString("Connection");
             builder.Services.AddDbContext<InventoryDbContext>(options =>
             options.UseSqlServer(connectionString));
-           
-            //independance injection
+
+            #region independance injection
             builder.Services.AddScoped<IUnitOfWork<InventoryDbContext>, UnitOfWork<InventoryDbContext>>();
             builder.Services.AddScoped<IItemServices, ItemServices>();
             builder.Services.AddScoped<ISupplierServices, SupplierServices>();
             builder.Services.AddScoped<ICategoryServices, CategoryServices>();
-            //builder.Services.AddScoped<ICustomerServices, CustomerServices>();
-            //builder.Services.AddScoped<IOrderServices, OrderServices>();
-            //builder.Services.AddScoped<ILocationServices, LocationServices>();
+            builder.Services.AddScoped<ICustomerServices, CustomerServices>();
+            builder.Services.AddScoped<IOrderServices, OrderServices>();
+            builder.Services.AddScoped<ILocationServices, LocationServices>();
             //builder.Services.AddScoped<ITransportationServices,TransportationServices>();
             //builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IBaseRepository<Item>, BaseRepository<Item>>();
             builder.Services.AddScoped<IBaseRepository<Supplier>, BaseRepository<Supplier>>();
             builder.Services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
+            builder.Services.AddScoped<IBaseRepository<Customer>, BaseRepository<Customer>>();
+            builder.Services.AddScoped<IBaseRepository<Order>, BaseRepository<Order>>();
+            builder.Services.AddScoped<IBaseRepository<Location>, BaseRepository<Location>>();
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<ILocationRepository,LocationRepository>();
+            #endregion
             //Signal R
             //builder.Services.AddSignalR();
             var app = builder.Build();
