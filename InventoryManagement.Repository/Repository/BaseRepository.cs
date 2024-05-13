@@ -93,7 +93,7 @@ namespace InventoryManagement.Repository.Repository
         public virtual async Task<bool> AddAsync(T entity)
         {
            await _Dbset.AddAsync(entity);
-            _context.SaveChangesAsync();
+          //  _context.SaveChangesAsync();
             return true;
              
         }

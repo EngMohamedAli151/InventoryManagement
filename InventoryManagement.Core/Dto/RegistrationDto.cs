@@ -10,7 +10,7 @@ namespace InventoryManagement.Core.Dto
     public class RegistrationDto
     {
         [MaxLength(100)]
-        public string UserName { get; set; }
+        public string userName { get; set; }
         public string Password { get; set; }
         [Required]
         public string Email { get; set; }

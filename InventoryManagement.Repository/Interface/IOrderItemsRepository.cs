@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Repository.Interface
 {
-    public interface IUserRepository: IBaseRepository<User>
+    public interface IOrderItemsRepository:IBaseRepository<OrderItem>
     {
-        User FindUserByEmail(string email);
-        User FindUserByEmailAndPassword(string email, string password);
     }
 }

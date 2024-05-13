@@ -22,5 +22,15 @@ namespace InventoryManagement.Services.Services
             _userRepository = userRepository;
 
         }
+
+        public User FindUserByEmail(string email)
+        {
+           return _userRepository.FindUserByEmail(email);
+        }
+
+        public User FindUserByEmailAndPassword(string email, string password)
+        {
+            return _userRepository.FindUserByEmailAndPassword(email, password);
+        }
     }
 }
