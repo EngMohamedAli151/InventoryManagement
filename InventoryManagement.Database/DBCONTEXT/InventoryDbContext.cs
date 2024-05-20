@@ -12,7 +12,7 @@ namespace InventoryManagement.Database.DBCONTEXT
             
         }
         /// <summary>
-        /// this 
+        /// Configrations 
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,6 +23,7 @@ namespace InventoryManagement.Database.DBCONTEXT
             modelBuilder.ApplyConfiguration(new OrderConfigrations());
 
         }
+        #region DbSet
         public DbSet<Supplier> Suppliers { get; set; } 
         public DbSet<Item> Items { get; set; } 
         public DbSet<Location> Locations { get; set; } 
@@ -31,7 +32,8 @@ namespace InventoryManagement.Database.DBCONTEXT
         public DbSet<Customer> Customers { get; set; } 
         public DbSet<User> Users { get; set; } 
         public DbSet<Category> Categories { get; set; } 
-        public DbSet<Transportation> Transportations { get; set; } 
-        
+        public DbSet<Transportation> Transportations { get; set; }
+        #endregion
+
     }
 }
